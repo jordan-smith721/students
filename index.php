@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Jsmit
+ * User: Jordan Smith
  * Date: 2/13/2019
  * Time: 9:56 AM
  */
@@ -11,6 +11,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 require_once 'vendor/autoload.php';
+session_start();
 
 //Create an instance of the Base class
 $f3 = Base::instance();
