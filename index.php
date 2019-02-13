@@ -36,8 +36,33 @@ $f3->route('GET /', function ($f3)
     echo Template::instance()->render("views/all-students.html");
 });
 
-$f3->route('GET /add', function ($f3)
+$f3->route('GET|POST /add', function ($f3)
 {
+
+    if(isset($_POST['submit']))
+    {
+      $sid = $_POST['sid'];
+      $last = $_POST['last'];
+      $first = $_POST['first'];
+      $birthdate = $_POST['birthdate'];
+      $gpa = $_POST['gpa'];
+      $advisor = $_POST['advisor'];
+
+        $success = addStudent($sid, $last, $first, $birthdate, $gpa, $advisor);
+        if($success)
+        {
+            //create a student object
+            $student = new Student($sid, $last, $first, $birthdate, $gpa, $advisor);
+
+            //add to session
+            $_SESSION['student'] = $student;
+
+            //reroute
+            $f3->reroute('/');
+        }
+    }
+
+
     echo Template::instance()->render("views/add.html");
 });
 
