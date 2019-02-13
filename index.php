@@ -36,5 +36,10 @@ $f3->route('GET /', function ($f3)
     echo Template::instance()->render("views/all-students.html");
 });
 
+$f3->route('GET /add', function ($f3)
+{
+    echo Template::instance()->render("views/add.html");
+});
+
 //Run fat free
 $f3->run();
