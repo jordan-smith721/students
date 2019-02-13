@@ -16,7 +16,10 @@ session_start();
 //Connect to DB
 require 'model/dbfunctions.php';
 $dbh = connect();
-
+if(!$dbh) //don't go any further if we can't connect to the database
+{
+    exit;
+}
 
 //Create an instance of the Base class
 $f3 = Base::instance();
@@ -25,8 +28,11 @@ $f3 = Base::instance();
 $f3->set('DEBUG', 3);
 
 //Define a default route
-$f3->route('GET /', function ()
+$f3->route('GET /', function ($f3)
 {
+    $students = getStudents();
+    $f3->set('students', $students);
+
     echo Template::instance()->render("views/all-students.html");
 });
 

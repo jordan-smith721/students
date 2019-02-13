@@ -5,7 +5,12 @@
     <title>Students</title>
 </head>
 <body>
-
 <h1>Students</h1>
+<ul>
+    <repeat group="{{ @students }}" value="{{ @student }}">
+        <li>{{ @student['last'] }}, {{ @student['first'] }}</li>
+    </repeat>
+</ul>
+
 </body>
 </html>

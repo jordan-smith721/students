@@ -16,3 +16,14 @@ function connect()
         return false;
     }
 }
+
+function getStudents()
+{
+    global $dbh;
+
+    $sql = "SELECT * FROM student ORDER BY last, first";
+    $statement = $dbh->prepare($sql);
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
