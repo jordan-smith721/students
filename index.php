@@ -13,6 +13,11 @@ error_reporting(E_ALL);
 require_once 'vendor/autoload.php';
 session_start();
 
+//Connect to DB
+require 'model/dbfunctions.php';
+$dbh = connect();
+
+
 //Create an instance of the Base class
 $f3 = Base::instance();
 
@@ -22,7 +27,7 @@ $f3->set('DEBUG', 3);
 //Define a default route
 $f3->route('GET /', function ()
 {
-    echo "<h1>Student Page</h1>";
+    echo Template::instance()->render("views/all-students.html");
 });
 
 //Run fat free
