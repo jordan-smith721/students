@@ -30,7 +30,7 @@ $f3->set('DEBUG', 3);
 //Define a default route
 $f3->route('GET /', function ($f3)
 {
-    $students = getStudents();
+    $students = getAllStudents();
     $f3->set('students', $students);
 
     echo Template::instance()->render("views/all-students.html");

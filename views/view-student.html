@@ -9,5 +9,12 @@
 </head>
 <body>
     <h1>View Student</h1>
+    <p>{{ @student['first'] }} {{ @student['last']}}</p>
+    <p>{{ @student['sid'] }}</p>
+    <p>{{ @student['gpa'] }}</p>
+    <check if="{{ @student['gpa'] > 2.0 }}">
+        <true><p>Passing</p></true>
+        <false><p>Failing</p></false>
+    </check>
 </body>
 </html>

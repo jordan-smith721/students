@@ -51,10 +51,10 @@ function addStudent($sid, $last, $first, $birthdate, $gpa, $advisor)
 function getStudent($sid) {
     global $dbh;
 
-    $sql = "SELECT sid FROM student WHERE sid = '$sid'";
+    $sql = "SELECT * FROM student WHERE sid = '$sid'";
     $statement = $dbh->prepare($sql);
     $statement->execute();
-    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
     return $result;
 
 }
