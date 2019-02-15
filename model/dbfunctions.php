@@ -1,7 +1,7 @@
 <?php
 
 //require our db config file
-require_once('/home/jsmithgr/config.php');
+require_once('/home/cleanogr/config.php');
 
 function connect()
 {
@@ -17,7 +17,7 @@ function connect()
     }
 }
 
-function getStudents()
+function getAllStudents()
 {
     global $dbh;
 
@@ -45,5 +45,16 @@ function addStudent($sid, $last, $first, $birthdate, $gpa, $advisor)
 
     //execute the statement and return true or false if it was successful
     return $statement->execute();
+
+}
+
+function getStudent($sid) {
+    global $dbh;
+
+    $sql = "SELECT sid FROM student WHERE sid = '$sid'";
+    $statement = $dbh->prepare($sql);
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
 
 }

@@ -66,5 +66,14 @@ $f3->route('GET|POST /add', function ($f3)
     echo Template::instance()->render("views/add.html");
 });
 
+$f3->route('GET /view/@sid', function($f3, $params) {
+    $sid = $params['sid'];
+    $student = getStudent($sid);
+    $f3->set('student', $student);
+
+    $template = new Template();
+    echo $template->render('views/view-student.html');
+});
+
 //Run fat free
 $f3->run();
