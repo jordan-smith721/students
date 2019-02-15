@@ -8,7 +8,7 @@
 <h1>Students</h1>
 <ul>
     <repeat group="{{ @students }}" value="{{ @student }}">
-        <li>{{ @student['last'] }}, {{ @student['first'] }}</li>
+        <li><a href="{{ @BASE }}/view/{{ @student['sid'] }}">{{ @student['last'] }}, {{ @student['first'] }}</a></li>
     </repeat>
 </ul>
 
